@@ -1,7 +1,28 @@
+
 spring:
 
   profiles:
     include: oauth
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    hikari:
+      username: sa
+      password:
+      jdbc-url: jdbc:h2:~/test
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
 
   security:
     oauth2:

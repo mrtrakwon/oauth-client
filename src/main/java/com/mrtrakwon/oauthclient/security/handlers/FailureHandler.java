@@ -1,15 +1,17 @@
-package com.mrtrakwon.oauthclient.security.handler;
+package com.mrtrakwon.oauthclient.security.handlers;
 
-import lombok.extern.slf4j.Slf4j;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class FailureHandler implements AuthenticationFailureHandler {
@@ -19,5 +21,6 @@ public class FailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         logger.error(exception.getMessage());
+
     }
 }
