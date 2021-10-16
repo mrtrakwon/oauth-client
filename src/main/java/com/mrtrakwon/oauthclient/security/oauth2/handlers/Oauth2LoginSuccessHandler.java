@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.handlers;
+package com.mrtrakwon.oauthclient.security.oauth2.handlers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.handlers;
+package com.mrtrakwon.oauthclient.security.oauth2.handlers;
 
 import java.io.IOException;
 
