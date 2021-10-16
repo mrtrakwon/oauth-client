@@ -29,27 +29,16 @@ public class User {
 	private String email;
 
 	@Column
+	private String password;
+
+	@Column
 	private String providerId;
 
 	@Builder
-	public User(String name, String email, String providerId) {
+	public User(String name, String email, String password,String providerId) {
 		this.name = name;
 		this.email = email;
+		this.password = password;
 		this.providerId = providerId;
-	}
-
-	public Map<String, Object> toAccessTokenClaims() {
-		return Map.of(
-			"email", this.email,
-			"name", this.name,
-			"providerId", this.providerId
-		);
-	}
-
-	public Map<String, Object> toRefreshTokenClaims() {
-		return Map.of(
-			"email", this.email,
-			"providerId", this.providerId
-		);
 	}
 }

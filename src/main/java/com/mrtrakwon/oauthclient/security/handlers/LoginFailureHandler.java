@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2.handlers;
+package com.mrtrakwon.oauthclient.security.handlers;
 
 import java.io.IOException;
 
@@ -16,9 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class Oauth2LoginFailureHandler implements AuthenticationFailureHandler {
+public class LoginFailureHandler implements AuthenticationFailureHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(Oauth2LoginFailureHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginFailureHandler.class);
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
