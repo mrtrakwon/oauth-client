@@ -7,11 +7,9 @@ import java.util.Map;
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.mrtrakwon.oauthclient.domain.user.User;
-import com.mrtrakwon.oauthclient.security.oauth2.principals.UserPrincipal;
+import com.mrtrakwon.oauthclient.security.principals.UserPrincipal;
 import com.mrtrakwon.oauthclient.security.oauth2.token.AccessToken;
 import com.mrtrakwon.oauthclient.security.oauth2.token.RefreshToken;
 

@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2.handlers;
+package com.mrtrakwon.oauthclient.security.handlers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.mrtrakwon.oauthclient.security.oauth2.AuthTokenService;
-import com.mrtrakwon.oauthclient.security.oauth2.principals.UserPrincipal;
+import com.mrtrakwon.oauthclient.security.principals.UserPrincipal;
 import com.mrtrakwon.oauthclient.security.oauth2.token.AccessToken;
 import com.mrtrakwon.oauthclient.security.oauth2.token.RefreshToken;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class Oauth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(Oauth2LoginSuccessHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginSuccessHandler.class);
 
     private final AuthTokenService authTokenService;
 

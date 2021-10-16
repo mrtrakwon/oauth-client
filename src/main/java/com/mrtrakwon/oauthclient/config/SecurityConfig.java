@@ -1,17 +1,20 @@
 package com.mrtrakwon.oauthclient.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 
+import com.mrtrakwon.oauthclient.security.normal.CustomUserDetailService;
 import com.mrtrakwon.oauthclient.security.oauth2.CustomOauth2UserService;
 import com.mrtrakwon.oauthclient.security.oauth2.OAuth2AuthorizationRequestBasedOnCookieRepository;
-import com.mrtrakwon.oauthclient.security.handlers.Oauth2LoginFailureHandler;
-import com.mrtrakwon.oauthclient.security.handlers.Oauth2LoginSuccessHandler;
+import com.mrtrakwon.oauthclient.security.handlers.LoginFailureHandler;
+import com.mrtrakwon.oauthclient.security.handlers.LoginSuccessHandler;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +23,13 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // social login
     private final CustomOauth2UserService customOauth2UserService;
-    private final Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
-    private final Oauth2LoginFailureHandler oauth2LoginFailureHandler;
+    private final LoginSuccessHandler loginSuccessHandler;
+    private final LoginFailureHandler loginFailureHandler;
+
+    // email login
+    private final CustomUserDetailService customUserDetailService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +47,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
 
+                    .formLogin()
+                    .loginProcessingUrl("/authenticate")
+                        .permitAll()
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .successHandler(loginSuccessHandler)
+                    .failureHandler(loginFailureHandler)
 
                 .and()
                     .oauth2Login()
@@ -54,11 +69,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .userInfoEndpoint()
                     .userService(this.customOauth2UserService) // 설정하지 않을 경우 디폴트 클래스 = DefaultOAuth2UserService
                 .and()
-                    .successHandler(oauth2LoginSuccessHandler)
-                    .failureHandler(oauth2LoginFailureHandler);
+                    .successHandler(loginSuccessHandler)
+                    .failureHandler(loginFailureHandler);
     }
 
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailService)
+            .passwordEncoder(bCryptPasswordEncoder());
+    }
 
+    @Bean BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     @Bean
     public AuthorizationRequestRepository<OAuth2AuthorizationRequest> authorizationRequestRepository() {
         return new OAuth2AuthorizationRequestBasedOnCookieRepository();
