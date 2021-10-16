@@ -1,7 +1,5 @@
-package com.mrtrakwon.oauthclient.security.services;
+package com.mrtrakwon.oauthclient.security.oauth2;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -12,9 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.mrtrakwon.oauthclient.domain.user.User;
 import com.mrtrakwon.oauthclient.domain.user.UserRepository;
-import com.mrtrakwon.oauthclient.security.user.OauthUserInfo;
-import com.mrtrakwon.oauthclient.security.user.OauthUserInfoFactory;
-import com.mrtrakwon.oauthclient.security.user.ProviderType;
+import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.OauthUserInfo;
+import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.OauthUserInfoFactory;
+import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.ProviderId;
+import com.mrtrakwon.oauthclient.security.oauth2.principals.UserPrincipal;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
@@ -29,7 +31,7 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
         OAuth2User auth2User = super.loadUser(userRequest);
 
         final String providerId = userRequest.getClientRegistration().getRegistrationId();
-        ProviderType providerType = ProviderType.valueOf(providerId.toUpperCase());
+        ProviderId providerType = ProviderId.valueOf(providerId.toUpperCase());
 
         OauthUserInfo userInfo = OauthUserInfoFactory.getUserInfo(providerType, auth2User.getAttributes());
         User user = User.builder()
@@ -39,6 +41,6 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
             .build();
         userRepository.save(user);
 
-        return auth2User;
+        return UserPrincipal.create(user, auth2User.getAttributes());
     }
 }

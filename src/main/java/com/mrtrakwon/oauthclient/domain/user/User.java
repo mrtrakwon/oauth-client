@@ -1,5 +1,7 @@
 package com.mrtrakwon.oauthclient.domain.user;
 
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,5 +36,20 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.providerId = providerId;
+	}
+
+	public Map<String, Object> toAccessTokenClaims() {
+		return Map.of(
+			"email", this.email,
+			"name", this.name,
+			"providerId", this.providerId
+		);
+	}
+
+	public Map<String, Object> toRefreshTokenClaims() {
+		return Map.of(
+			"email", this.email,
+			"providerId", this.providerId
+		);
 	}
 }

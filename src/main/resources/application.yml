@@ -1,4 +1,3 @@
-
 spring:
 
   profiles:
@@ -43,3 +42,10 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+jwt:
+  auth:
+    secret-key: MYREALTRIP::rakwon.seong@myrealtrip.com
+    access-token:
+      expiration: 7200 #2시간
+    refresh-token:
+      expiration: 1209600 #2주

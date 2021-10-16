@@ -10,13 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FailureHandler implements AuthenticationFailureHandler {
+@Component
+public class Oauth2LoginFailureHandler implements AuthenticationFailureHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(FailureHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(Oauth2LoginFailureHandler.class);
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {

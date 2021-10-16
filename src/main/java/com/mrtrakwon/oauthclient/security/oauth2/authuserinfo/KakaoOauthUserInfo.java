@@ -1,7 +1,6 @@
-package com.mrtrakwon.oauthclient.security.user;
+package com.mrtrakwon.oauthclient.security.oauth2.authuserinfo;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class KakaoOauthUserInfo implements OauthUserInfo{
@@ -39,6 +38,7 @@ public class KakaoOauthUserInfo implements OauthUserInfo{
 
 	@Override
 	public String getProviderId() {
-		return ProviderType.KAKAO.name();
+		return ProviderId.KAKAO.name();
 	}
+
 }
