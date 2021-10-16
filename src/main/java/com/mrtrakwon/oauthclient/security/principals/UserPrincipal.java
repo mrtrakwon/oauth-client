@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.mrtrakwon.oauthclient.domain.user.User;
-import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.ProviderId;
+import com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo.ProviderId;
 
 public class UserPrincipal implements OAuth2User, UserDetails {
 

@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.normal;
+package com.mrtrakwon.oauthclient.security.emaillogin;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

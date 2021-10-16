@@ -1,8 +1,7 @@
-package com.mrtrakwon.oauthclient.security.oauth2;
+package com.mrtrakwon.oauthclient.security.oauthlogin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -11,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.mrtrakwon.oauthclient.domain.user.User;
 import com.mrtrakwon.oauthclient.domain.user.UserRepository;
-import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.OauthUserInfo;
-import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.OauthUserInfoFactory;
-import com.mrtrakwon.oauthclient.security.oauth2.authuserinfo.ProviderId;
+import com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo.OauthUserInfo;
+import com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo.OauthUserInfoFactory;
+import com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo.ProviderId;
 import com.mrtrakwon.oauthclient.security.principals.UserPrincipal;
 
 import lombok.RequiredArgsConstructor;

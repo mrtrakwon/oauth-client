@@ -10,9 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 
-import com.mrtrakwon.oauthclient.security.normal.CustomUserDetailService;
-import com.mrtrakwon.oauthclient.security.oauth2.CustomOauth2UserService;
-import com.mrtrakwon.oauthclient.security.oauth2.OAuth2AuthorizationRequestBasedOnCookieRepository;
+import com.mrtrakwon.oauthclient.security.emaillogin.CustomUserDetailService;
+import com.mrtrakwon.oauthclient.security.oauthlogin.CustomOauth2UserService;
+import com.mrtrakwon.oauthclient.security.oauthlogin.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import com.mrtrakwon.oauthclient.security.handlers.LoginFailureHandler;
 import com.mrtrakwon.oauthclient.security.handlers.LoginSuccessHandler;
 

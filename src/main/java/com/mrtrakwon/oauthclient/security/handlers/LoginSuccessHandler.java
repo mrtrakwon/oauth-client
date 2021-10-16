@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.mrtrakwon.oauthclient.security.oauth2.AuthTokenService;
+import com.mrtrakwon.oauthclient.security.oauthlogin.AuthTokenService;
 import com.mrtrakwon.oauthclient.security.principals.UserPrincipal;
-import com.mrtrakwon.oauthclient.security.oauth2.token.AccessToken;
-import com.mrtrakwon.oauthclient.security.oauth2.token.RefreshToken;
+import com.mrtrakwon.oauthclient.security.oauthlogin.token.AccessToken;
+import com.mrtrakwon.oauthclient.security.oauthlogin.token.RefreshToken;
 
 @Slf4j
 @Component

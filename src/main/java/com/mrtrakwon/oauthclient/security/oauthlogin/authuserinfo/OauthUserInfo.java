@@ -1,6 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2.authuserinfo;
-
-import java.util.Map;
+package com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo;
 
 public interface  OauthUserInfo {
 	String getId();

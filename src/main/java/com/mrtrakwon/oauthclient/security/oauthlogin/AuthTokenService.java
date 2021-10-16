@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2;
+package com.mrtrakwon.oauthclient.security.oauthlogin;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.mrtrakwon.oauthclient.security.principals.UserPrincipal;
-import com.mrtrakwon.oauthclient.security.oauth2.token.AccessToken;
-import com.mrtrakwon.oauthclient.security.oauth2.token.RefreshToken;
+import com.mrtrakwon.oauthclient.security.oauthlogin.token.AccessToken;
+import com.mrtrakwon.oauthclient.security.oauthlogin.token.RefreshToken;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

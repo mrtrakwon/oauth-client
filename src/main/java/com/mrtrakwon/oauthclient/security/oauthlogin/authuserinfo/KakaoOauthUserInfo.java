@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2.authuserinfo;
+package com.mrtrakwon.oauthclient.security.oauthlogin.authuserinfo;
 
 import java.util.Collections;
 import java.util.Map;

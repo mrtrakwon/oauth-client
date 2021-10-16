@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2.token;
+package com.mrtrakwon.oauthclient.security.oauthlogin.token;
 
 
 

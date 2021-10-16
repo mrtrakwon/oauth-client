@@ -1,4 +1,4 @@
-package com.mrtrakwon.oauthclient.security.oauth2;
+package com.mrtrakwon.oauthclient.security.oauthlogin;
 
 import com.mrtrakwon.oauthclient.utils.CookieUtil;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
